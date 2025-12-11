@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pessoas</title>
+    <link rel="stylesheet" href="pessoas.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1 class="container">Pessoas</h1>
+    </header>
+
+    <div class="container">
+      <div class="toolbar">
+        <div></div>
+        <a href="pessoa-form.html">
+          <button class="btn">Nova Pessoa</button>
+        </a>
+      </div>
+
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th class="desktop-only">Email</th>
+              <th class="desktop-only">Telefone</th>
+              <th style="width: 150px">Ações</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>João da Silva</td>
+              <td class="desktop-only">joao@email.com</td>
+              <td class="desktop-only">44 99999-0000</td>
+              <td>
+                <div class="actions">
+                  <a href="pessoa-view.html"
+                    ><button class="btn ghost">Ver</button></a
+                  >
+                  <!-- aqui passamos o id=1 -->
+                  <a href="pessoa-form.html?id=1"
+                    ><button class="btn ghost">Editar</button></a
+                  >
+                  <button class="btn ghost">Excluir</button>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>2</td>
+              <td>Maria Oliveira</td>
+              <td class="desktop-only">maria@email.com</td>
+              <td class="desktop-only">—</td>
+              <td>
+                <div class="actions">
+                  <a href="pessoa-view.html"
+                    ><button class="btn ghost">Ver</button></a
+                  >
+                  <!-- aqui passamos o id=2 -->
+                  <a href="pessoa-form.html?id=2"
+                    ><button class="btn ghost">Editar</button></a
+                  >
+                  <button class="btn ghost">Excluir</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
