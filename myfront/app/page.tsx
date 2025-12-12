@@ -7,6 +7,27 @@ export default function Home() {
   const [pessoas, setPessoas] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const handleDelete = async (id: number | string) => {
+    if (!confirm("Tem certeza que deseja excluir esta pessoa?")) return;
+
+    try {
+      const res = await fetch(`http://localhost:5000/api/pessoa/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || `Failed to delete pessoa ${id}`);
+      }
+
+      // Remove from local state
+      setPessoas((prev) => prev.filter((p) => String(p.id) !== String(id)));
+    } catch (err) {
+      console.error("Failed to delete pessoa:", err);
+      alert("Erro ao excluir pessoa. Veja o console para mais detalhes.");
+    }
+  };
+
   useEffect(() => {
     const fetchPessoas = async () => {
       try {
@@ -38,7 +59,7 @@ export default function Home() {
         <div className="container">
           <div className="toolbar">
             <div></div>
-            <Link href="/nova_pessoa">
+            <Link href="/form_pessoa">
               <button className="btn">Nova Pessoa</button>
             </Link>
           </div>
@@ -73,9 +94,9 @@ export default function Home() {
                       <td className="desktop-only">{p.telefone ?? "—"}</td>
                       <td>
                         <div className="actions">
-                          <Link href={`/pessoa/${p.id}`}><button className="btn ghost">Ver</button></Link>
-                          <Link href={`/nova_pessoa?id=${p.id}`}><button className="btn ghost">Editar</button></Link>
-                          <button className="btn ghost">Excluir</button>
+                          {/* <Link href={`/pessoa/${p.id}`}><button className="btn ghost">Ver</button></Link> */}
+                          <Link href={`/form_pessoa?id=${p.id}`}><button className="btn ghost">Editar</button></Link>
+                          <button className="btn ghost" onClick={() => handleDelete(p.id)}>Excluir</button>
                         </div>
                       </td>
                     </tr>
