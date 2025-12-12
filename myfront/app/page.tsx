@@ -11,9 +11,11 @@ export default function Home() {
     const fetchPessoas = async () => {
       try {
         const res = await fetch("http://localhost:5000/api/pessoa");
+        //console.log("Fetch response:", res);
         if (!res.ok) throw new Error("Network response was not ok");
         const data = await res.json();
-        setPessoas(Array.isArray(data) ? data : []);
+        //console.log("Fetched data:", data);
+        setPessoas(Array.isArray(data.details) ? data.details : []);
       } catch (err) {
         console.error("Failed to fetch pessoas:", err);
         setPessoas([]);
