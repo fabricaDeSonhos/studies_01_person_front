@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastrar Pessoa</title>
+    <link rel="stylesheet" href="pessoas.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1 class="container" id="titulo">Cadastrar Pessoa</h1>
+    </header>
+
+    <div class="container">
+      <div class="card">
+        <form id="formPessoa">
+          <input type="hidden" id="id" />
+
+          <div class="full">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" placeholder="Digite o nome" />
+          </div>
+
+          <div class="full">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="email@exemplo.com" />
+          </div>
+
+          <div class="full">
+            <label for="telefone">Telefone (opcional)</label>
+            <input type="tel" id="telefone" placeholder="(xx) xxxxx-xxxx" />
+          </div>
+
+          <div class="actions full">
+            <a href="pessoas-list.html" class="btn ghost">Cancelar</a>
+            <button type="button" class="btn">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Verifica se existe ?id= na URL
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+
+      if (id) {
+        document.getElementById("titulo").textContent = "Editar Pessoa";
+      }
+    </script>
+
+  </body>
+</html>
